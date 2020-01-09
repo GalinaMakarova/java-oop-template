@@ -7,22 +7,22 @@ public class SimpleAuthorRepository implements AuthorRepository {
 
     @Override
     public boolean save(Author author) {
-        for (int i = 0; i < count(); i++){
-            if(findByFullName(author.getName(), author.getLastName()).equals(author)){
+        for (int i = 0; i < count(); i++) {
+            if (findByFullName(author.getName(), author.getLastName()).equals(author)) {
                 return false;
             }
         }
-        Author[] buf = new Author[count()+1];
+        Author[] buf = new Author[count() + 1];
         System.arraycopy(authors, 0, buf, 0, count());
-        buf[buf.length-1] = author;
+        buf[buf.length - 1] = author;
         authors = buf;
         return true;
     }
 
     @Override
     public Author findByFullName(String name, String lastname) {
-        for(int i=0; i < count(); i++){
-            if (authors[i].getName().equals(name)&&authors[i].getLastName().equals(lastname)){
+        for (int i = 0; i < count(); i++) {
+            if (authors[i].getName().equals(name) && authors[i].getLastName().equals(lastname)) {
                 return authors[i];
             }
         }
@@ -31,18 +31,18 @@ public class SimpleAuthorRepository implements AuthorRepository {
 
     @Override
     public boolean remove(Author author) {
-        if(findByFullName(author.getName(), author.getLastName()) != null){
+        if (findByFullName(author.getName(), author.getLastName()) != null) {
             int k = 0; //индекс для отслеживания положения необходимого автора в массиве
             if (count() > 1) {
                 Author[] buf = new Author[count() - 1];
-                for(int i = 0; i < count(); i++){
-                    if (authors[i].getName().equals(author.getName()) && authors[i].getLastName().equals(author.getLastName())){
+                for (int i = 0; i < count(); i++) {
+                    if (authors[i].getName().equals(author.getName()) && authors[i].getLastName().equals(author.getLastName())) {
                         k = i;
                         break;
                     }
                 }
                 System.arraycopy(authors, 0, buf, 0, k);
-                System.arraycopy(authors, k+1, buf, k, buf.length);
+                System.arraycopy(authors, k + 1, buf, k, buf.length);
                 authors = buf;
             } else {
                 authors = new Author[]{};
