@@ -61,7 +61,9 @@ public class SchoolBook extends Book {
     @Override
     public String toString() {
         return "SchoolBook{" +
-                "authorName='" + authorName + '\'' +
+                "numberOfPages=" + this.getNumberOfPages() +
+                ", name='" + this.getName() + '\'' +
+                ", authorName='" + authorName + '\'' +
                 ", authorLastName='" + authorLastName + '\'' +
                 ", publishDate=" + publishDate +
                 '}';

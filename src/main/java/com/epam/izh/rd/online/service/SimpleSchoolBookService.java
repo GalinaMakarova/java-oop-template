@@ -18,10 +18,10 @@ public class SimpleSchoolBookService implements BookService<SchoolBook> {
 
     @Override
     public boolean save(SchoolBook book) {
-        if (authorService.findByFullName(book.getAuthorName(), book.getAuthorLastName()) == null) {
-            return false;
+        if (authorService.findByFullName(book.getAuthorName(), book.getAuthorLastName()) != null) {
+            return schoolBookBookRepository.save(book);
         }
-        return schoolBookBookRepository.save(book);
+        return false;
     }
 
     @Override

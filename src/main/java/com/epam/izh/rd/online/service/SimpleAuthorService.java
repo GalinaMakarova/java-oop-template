@@ -10,7 +10,8 @@ public class SimpleAuthorService implements AuthorService {
     }
 
     public SimpleAuthorService(AuthorRepository authorRepository) {
-        this.authorRepository = authorRepository;
+        if (authorRepository != null)
+            this.authorRepository = authorRepository;
     }
 
     @Override
