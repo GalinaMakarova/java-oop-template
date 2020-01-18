@@ -1,11 +1,10 @@
 package com.epam.izh.rd.online.entity;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 /**
  * Сущность учебника. Он должен быть унаследован от сущности Book
- *
+ * <p>
  * Необходимо:
  * 1) Унаследовать данный класс от класса Book
  * 2) Создать список полей с указанными типами ровно в этом порядке:
@@ -19,6 +18,54 @@ import java.util.Objects;
  * 5) Переопределить методы equals и hashCode - используйте генерацию (не забывайте alt+inset)
  * 6) Переопределить метод toString с выводом всех полей (не забывайте alt+inset)
  */
-public class SchoolBook extends Book {
 
+public class SchoolBook extends Book {
+    private String authorName;
+    private String authorLastName;
+    private LocalDate publishDate;
+
+    public SchoolBook() {
+    }
+
+    public SchoolBook(int numberOfPages, String name, String authorName, String authorLastName, LocalDate publishDate) {
+        super(numberOfPages, name);
+        this.authorName = authorName;
+        this.authorLastName = authorLastName;
+        this.publishDate = publishDate;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
+    public String getAuthorLastName() {
+        return authorLastName;
+    }
+
+    public void setAuthorLastName(String authorLastName) {
+        this.authorLastName = authorLastName;
+    }
+
+    public LocalDate getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(LocalDate publishDate) {
+        this.publishDate = publishDate;
+    }
+
+    @Override
+    public String toString() {
+        return "SchoolBook{" +
+                "numberOfPages=" + this.getNumberOfPages() +
+                ", name='" + this.getName() + '\'' +
+                ", authorName='" + authorName + '\'' +
+                ", authorLastName='" + authorLastName + '\'' +
+                ", publishDate=" + publishDate +
+                '}';
+    }
 }
