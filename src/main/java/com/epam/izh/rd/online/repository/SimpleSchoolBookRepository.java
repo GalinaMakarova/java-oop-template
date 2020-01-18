@@ -23,19 +23,17 @@ public class SimpleSchoolBookRepository implements BookRepository<SchoolBook> {
                     bookAppearCount++;
                 }
             }
-            if (bookAppearCount > 0) {
-                SchoolBook[] resultBooksArray = new SchoolBook[bookAppearCount];
-                int j = 0;
-                for (int i = 0; i < count(); i++) {
-                    if (schoolBooks[i].getName().equals(name)) {
-                        resultBooksArray[j] = schoolBooks[i];
-                        j++;
-                    }
+        }
+        if (bookAppearCount > 0) {
+            SchoolBook[] resultBooksArray = new SchoolBook[bookAppearCount];
+            int j = 0;
+            for (int i = 0; i < count(); i++) {
+                if (schoolBooks[i].getName().equals(name)) {
+                    resultBooksArray[j] = schoolBooks[i];
+                    j++;
                 }
-                return resultBooksArray;
-            } else {
-                return new SchoolBook[0];
             }
+            return resultBooksArray;
         } else {
             return new SchoolBook[0];
         }
